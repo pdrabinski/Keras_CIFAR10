@@ -2,7 +2,7 @@ import keras
 from keras.datasets import cifar10
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Dense, Dropout, Activation, Flatten
-from keras.callbacks import TensorBoard, EarlyStopping
+from keras.callbacks import TensorBoard
 from time import time
 
 batch_size = 32
@@ -51,8 +51,6 @@ rms = keras.optimizers.rmsprop(lr=.0001, decay=1e-6)
 model.compile(loss='categorical_crossentropy', optimizer=rms, metrics=['accuracy'])
 
 tb = TensorBoard(log_dir="logs/{}".format(time()), histogram_freq=10, write_images=True)
-
-# tb = TensorBoard(log_dir="logs/{}".format(time()))
 
 #es = EarlyStopping(monitor='val_loss', min_delta=.0001, patience=3)
 
